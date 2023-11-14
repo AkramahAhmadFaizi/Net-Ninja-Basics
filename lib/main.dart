@@ -4,39 +4,61 @@ void main() => runApp(const MaterialApp(
   home: Home(),
 ));
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int level=0;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Restarted'),
+        title: const Text('ID CARD'),
         centerTitle: true,
-        backgroundColor: Colors.purple[200],
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(flex: 5, child: Image.asset('assets/Akramah pic 1 feb 2023.png')),
-          Expanded(child: Text('Hey Ninjas!', style: TextStyle(backgroundColor: Colors.cyan),)),
-          Expanded(flex: 1, child: ElevatedButton(onPressed: (){}, child: Icon(Icons.add))),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.blue,
-              child: Text('AGAIN'),
-              padding: EdgeInsets.all(20.0),
-            ),
-          ),
-        ],
+        backgroundColor: Colors.grey[600],
+        elevation: 0.0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        backgroundColor: Colors.purple[200],
-        child: const Text('++'),
+        onPressed: (){
+          setState(() {
+            level++;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[600],
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(child: CircleAvatar(backgroundImage: AssetImage("assets/Akramah pic 1 feb 2023.png"), radius: 50.0,)),
+            Divider(height: 30.0,),
+            Text('NAME:',
+            style: TextStyle(color: Colors.cyan[700], letterSpacing: 2.0),),
+            Text('Akramah Faizi',
+            style: TextStyle(color: Colors.pinkAccent, fontSize: 18.0),),
+            SizedBox(height: 20.0),
+            Text('LEVEL:',
+              style: TextStyle(color: Colors.cyan[700], letterSpacing: 2.0),),
+            Text('$level',
+              style: TextStyle(color: Colors.pinkAccent, fontSize: 18.0),),
+            SizedBox(height: 20.0,),
+            Row(
+              children: [
+                Icon(Icons.email),
+                SizedBox(width: 5.0,),
+                Text('akramahfaizi@gmail.com')
+              ],
+            ),
+          ],
+        ),
+      )
     );
   }
 }
