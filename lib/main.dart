@@ -16,15 +16,8 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.purple[200],
       ),
       body: const Center(
-        child: Text(
-          'ALHUMDULILLAH!',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2.0,
-            color: Colors.pinkAccent,
-            fontFamily: 'Simple',
-          ),),
+        child: Image(image: NetworkImage('https://i.pinimg.com/originals/b9/75/29/b97529d497387509165c215bf8fb9222.jpg'),
+          fit: BoxFit.cover,)
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
