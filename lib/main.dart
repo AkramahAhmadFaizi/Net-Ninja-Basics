@@ -19,27 +19,17 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Hey Ninjas!', style: TextStyle(backgroundColor: Colors.cyan),),
-          ElevatedButton(onPressed: (){}, child: Icon(Icons.add)),
-          Container(
-            color: Colors.blue,
-            child: Text('AGAIN'),
-            padding: EdgeInsets.all(20.0),
+          Expanded(flex: 5, child: Image.asset('assets/Akramah pic 1 feb 2023.png')),
+          Expanded(child: Text('Hey Ninjas!', style: TextStyle(backgroundColor: Colors.cyan),)),
+          Expanded(flex: 1, child: ElevatedButton(onPressed: (){}, child: Icon(Icons.add))),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.blue,
+              child: Text('AGAIN'),
+              padding: EdgeInsets.all(20.0),
+            ),
           ),
-          Column(
-            children: [
-              Text('Check the length', style: TextStyle(backgroundColor: Colors.cyan),),
-              IconButton(onPressed: (){}, icon: Icon(Icons.add)),
-              ElevatedButton(onPressed: (){}, child: Icon(Icons.alternate_email)),
-              Container(
-                color: Colors.blue,
-                child: Text('Column'),
-                padding: EdgeInsets.all(20.0),
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
