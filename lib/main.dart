@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Quote.dart';
+import 'quote_card.dart';
 
 void main() => runApp(const MaterialApp(
   home: Home(),
@@ -21,25 +22,9 @@ class _HomeState extends State<Home> {
     Quote('Ask not what your country can do for you; ask what you can do for your country.', 'John Kennedy'),
     Quote('Ask, and it shall be given you; seek, and you shall find.	the Bible	Greek', 'The Bible'),
     Quote('Eighty percent of success is showing up.', 'Woody Allen'),
-    Quote('Elementary, my dear Watson.', 'Sherlock Holmes')
+    Quote('Elementary, my dear Watson.', 'Sherlock Holmes'),
   ];
 
-  Widget quoteTemplate(quotess){
-    return Card(
-      elevation: 3.0,
-      margin: EdgeInsets.fromLTRB(10.0,10.0,10.0,0.0),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(quotess.text, style: TextStyle(fontSize: 15.0),),
-            Text(quotess.author, style: TextStyle(fontSize: 13.0),),
-          ],
-        ),
-      ),
-    );
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +38,11 @@ class _HomeState extends State<Home> {
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+          children: quotes.map((quote) => QuoteCard(quote, (){
+            setState(() {
+              quotes.remove(quote);
+            });
+          })).toList(),
         ),
       )
     );
